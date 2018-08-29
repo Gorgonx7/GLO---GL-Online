@@ -16,6 +16,7 @@
 
 #include <iostream>
 #include "Shader.h"
+#include "Connection.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow *window);
@@ -29,6 +30,7 @@ const unsigned int SCR_HEIGHT = 600;
 
 int main()
 {
+	
 	// glfw: initialize and configure
 	// ------------------------------
 	glfwInit();
@@ -108,12 +110,14 @@ int main()
 	// render loop
 	// -----------
 	GLuint m_ColourLocation = glGetUniformLocation(m_Shader.m_ShaderID, "pColour");
+	
 	while (!glfwWindowShouldClose(window))
 	{
 		// input
 		// -----
 		processInput(window);
-
+		Connection * m_connection = new Connection();
+		delete m_connection;
 		// render
 		// ------
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
@@ -121,6 +125,7 @@ int main()
 
 		// draw our first triangle
 		glUseProgram(m_Shader.m_ShaderID);
+
 		glUniform4f(m_ColourLocation, 1, 0, 0,1);
 		glBindVertexArray(VAO); // seeing as we only have a single VAO there's no need to bind it every time, but we'll do so to keep things a bit more organized
 								//glDrawArrays(GL_TRIANGLES, 0, 6);
