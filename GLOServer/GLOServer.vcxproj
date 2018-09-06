@@ -119,6 +119,7 @@
     <ClCompile Include="Connection.cpp" />
     <ClCompile Include="ConnectionAddress.cpp" />
     <ClCompile Include="DBQuery.cpp" />
+    <ClCompile Include="entry.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -126,6 +127,7 @@
     <ClInclude Include="Connection.h" />
     <ClInclude Include="ConnectionAddress.h" />
     <ClInclude Include="DBQuery.h" />
+    <ClInclude Include="entry.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
