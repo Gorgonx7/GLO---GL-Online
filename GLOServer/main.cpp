@@ -21,15 +21,20 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <iostream>
+#include <vector>
+#include "entry.h"
  // Need to link with Ws2_32.lib
 #pragma comment (lib, "Ws2_32.lib")
 // #pragma comment (lib, "Mswsock.lib")
 
 #define DEFAULT_BUFLEN 512
 #define DEFAULT_PORT "27015"
+
 using namespace std;
 int __cdecl main(void)
 {
+	vector<char *> m_DataReceived;
+	vector<entry *> m_Database;
 	while (true) {
 		WSADATA wsaData;
 		int iResult;
@@ -110,10 +115,14 @@ int __cdecl main(void)
 		do {
 			
 			iResult = recv(ClientSocket, recvbuf, recvbuflen, 0);
+			char * buffer = new char[iResult];
 			for (int x = 0; x < iResult; x++) {
-				cout << recvbuf[x];
+				buffer[x] = recvbuf[x];
+				
 			}
-			cout << endl;
+			m_Database.push_back(new entry(iResult, buffer));
+
+			
 			if (iResult > 0) {
 				printf("Bytes received: %d\n", iResult);
 

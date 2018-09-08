@@ -13,8 +13,10 @@
 class entry
 {
 public:
-
+	int m_LengthOfData;
+	char * m_Data;
 	entry(int lengthOfData, char * data);
 	~entry();
+	
 };
 
