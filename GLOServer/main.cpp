@@ -33,7 +33,7 @@
 using namespace std;
 int __cdecl main(void)
 {
-	vector<char *> m_DataReceived;
+	vector<char> m_DataReceived;
 	vector<entry *> m_Database;
 	while (true) {
 		WSADATA wsaData;
@@ -112,15 +112,23 @@ int __cdecl main(void)
 		closesocket(ListenSocket);
 
 		// Receive until the peer shuts down the connection
+		
+
 		do {
 			
 			iResult = recv(ClientSocket, recvbuf, recvbuflen, 0);
-			char * buffer = new char[iResult];
+			if (iResult == 0) {
+				break;
+			}
+			
+			
 			for (int x = 0; x < iResult; x++) {
-				buffer[x] = recvbuf[x];
+				m_DataReceived.push_back(recvbuf[x]);
 				
 			}
-			m_Database.push_back(new entry(iResult, buffer));
+			cout << endl << m_DataReceived[0] << endl;
+			
+			
 
 			
 			if (iResult > 0) {
@@ -155,10 +163,18 @@ int __cdecl main(void)
 			WSACleanup();
 			return 1;
 		}
-
+		char * holder = new char[m_DataReceived.size()];
+		for (int x = 0; x < m_DataReceived.size(); x++) {
+			holder[x] = m_DataReceived[x];
+		}
+		
+		entry * entryHolder = new entry(m_DataReceived.size(), holder);
+		m_DataReceived.clear();
+		m_Database.push_back(entryHolder);
 		// cleanup
 		closesocket(ClientSocket);
 		WSACleanup();
 	}
+	
 	return 0;
 }
