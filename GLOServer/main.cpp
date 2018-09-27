@@ -163,12 +163,9 @@ int __cdecl main(void)
 			WSACleanup();
 			return 1;
 		}
-		char * holder = new char[m_DataReceived.size()];
-		for (int x = 0; x < m_DataReceived.size(); x++) {
-			holder[x] = m_DataReceived[x];
-		}
 		
-		entry * entryHolder = new entry(m_DataReceived.size(), holder);
+		
+		entry * entryHolder = new entry(m_DataReceived);
 		m_DataReceived.clear();
 		m_Database.push_back(entryHolder);
 		// cleanup

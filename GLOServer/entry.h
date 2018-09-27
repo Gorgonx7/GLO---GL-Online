@@ -10,14 +10,16 @@
 |*|
 |*|
 \*/
-
+#include <iostream>
+#include <vector>
+using namespace std;
 class entry
 {
 public:
 	int m_LengthOfData;
-	char * m_Data;
+	vector<char> m_Data;
 	
-	entry(int lengthOfData, char * data);
+	entry(vector<char> data);
 	~entry();
 	void writeData();
 };
