@@ -14,8 +14,7 @@
 #include "Model.h"
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include "modelLoader.h"
-modelLoader * Loader;
+
 Model::Model() {
 }
 
@@ -27,6 +26,7 @@ Model::~Model() {
 
 void Model::Draw()
 {
-	glBindVertexArray(Loader.);
+	glBindVertexArray(*(Loader->getVAO()));
+	glDrawElements(GL_TRIANGLES, Loader->getFaceList()->size(), GL_UNSIGNED_INT, 0);
 }
 

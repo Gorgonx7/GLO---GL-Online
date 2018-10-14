@@ -1,5 +1,7 @@
 #pragma once
 #include<glm/glm.hpp>
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
 #include<vector>
 using namespace std;
 class modelLoader
@@ -22,10 +24,11 @@ public:
 	};
 	const vector<float> const * getData() {
 		return &data;
-	}
+	};
+
 	const GLuint const * getVAO() {
 		return &VAO;
-	}
+	};
 private: 
 	vector<glm::vec3 *> vertexList;
 	vector<glm::vec2 *> textureList;

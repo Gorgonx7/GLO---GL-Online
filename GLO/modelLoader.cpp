@@ -5,7 +5,7 @@
 #include <glm/glm.hpp>
 #include <vector>
 #include <string>
-GLuint VAO;
+
 vector<GLuint> BufferObjects;
 vector<glm::vec3 *> vertexList;
 vector<glm::vec2 *> textureList;

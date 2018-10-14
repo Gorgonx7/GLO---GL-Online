@@ -12,16 +12,21 @@
  */
 
 #pragma once
+#include "modelLoader.h"
 
 class Model {
 public:
     Model();
     Model(const Model& orig);
     virtual ~Model();
+	inline void setModelLoader(modelLoader * pLoader) {
+		Loader = pLoader;
+	};// this will become depricated at some point when we define model loaders per model
+	
 	// this will bind the VAO and then call the draw arrays method to create the object
 	void Draw();
 private:
-
+	modelLoader * Loader;
 };
 
 

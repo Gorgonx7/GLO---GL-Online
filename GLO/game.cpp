@@ -2,8 +2,10 @@
 #include "Shader.h"
 #include "Connection.h"
 #include "modelLoader.h"
+#include "Model.h"
 Shader * m_Shader;
 modelLoader * test;
+Model * firstModel;
 // remember don't create any variables here before the gl context is created
 // otherwise you will get invalid memory access exception
 
@@ -37,6 +39,7 @@ void draw() {
 	glBindVertexArray(VAO); // seeing as we only have a single VAO there's no need to bind it every time, but we'll do so to keep things a bit more organized
 							//glDrawArrays(GL_TRIANGLES, 0, 6);
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+	firstModel->Draw();
 	// glBindVertexArray(0); // no need to unbind it every time 
 }
 
@@ -72,7 +75,8 @@ void onLoad() {
 	// VAOs requires a call to glBindVertexArray anyways so we generally don't unbind VAOs (nor VBOs) when it's not directly necessary.
 	glBindVertexArray(0);
 	test = new modelLoader ("models/utah-teapot.obj");
-	
+	firstModel = new Model();
+	firstModel->setModelLoader(test);
 }
 
 void unLoad() {
