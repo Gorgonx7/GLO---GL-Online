@@ -18,6 +18,8 @@ public:
     Model();
     Model(const Model& orig);
     virtual ~Model();
+	// this will bind the VAO and then call the draw arrays method to create the object
+	void Draw();
 private:
 
 };

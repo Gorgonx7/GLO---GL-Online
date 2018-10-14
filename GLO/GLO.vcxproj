@@ -26,6 +26,7 @@
     <ClCompile Include="glad.c" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Model.cpp" />
+    <ClCompile Include="modelLoader.cpp" />
     <ClCompile Include="Propertie.cpp" />
     <ClCompile Include="sGameObject.cpp" />
     <ClCompile Include="Shader.cpp" />
@@ -36,6 +37,7 @@
     <ClInclude Include="game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Model.h" />
+    <ClInclude Include="modelLoader.h" />
     <ClInclude Include="Propertie.h" />
     <ClInclude Include="sGameObject.h" />
     <ClInclude Include="Shader.h" />

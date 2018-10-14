@@ -16,6 +16,9 @@
     <Filter Include="Shaders">
       <UniqueIdentifier>{abe94149-7e00-4aff-a308-522dac36daf2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="models">
+      <UniqueIdentifier>{56b67292-52f4-403f-8849-390efadcc988}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Connection.cpp">
@@ -48,6 +51,9 @@
     <ClCompile Include="game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="modelLoader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Connection.h">
@@ -72,6 +78,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="modelLoader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

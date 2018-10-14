@@ -5,5 +5,6 @@ public:
 	attribute();
 	~attribute();
 	unsigned char * getData();
+
 };
 

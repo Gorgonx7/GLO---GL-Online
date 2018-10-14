@@ -22,3 +22,7 @@ Model::Model(const Model& orig) {
 Model::~Model() {
 }
 
+void Model::Draw()
+{
+}
+
