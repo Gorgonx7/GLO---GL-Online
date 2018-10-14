@@ -114,6 +114,7 @@ modelLoader::modelLoader(const char * pModelName)
 			modelLoader::data.push_back(modelLoader::textureList[texture]->x);
 			modelLoader::data.push_back(modelLoader::textureList[texture]->y);
 			indexes.push_back(x);
+
 		}
 	}
 }
