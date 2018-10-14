@@ -12,7 +12,10 @@
  */
 
 #include "Model.h"
-
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
+#include "modelLoader.h"
+modelLoader * Loader;
 Model::Model() {
 }
 
@@ -24,5 +27,6 @@ Model::~Model() {
 
 void Model::Draw()
 {
+	glBindVertexArray(Loader.);
 }
 

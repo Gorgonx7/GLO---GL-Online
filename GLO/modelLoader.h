@@ -23,11 +23,15 @@ public:
 	const vector<float> const * getData() {
 		return &data;
 	}
+	const GLuint const * getVAO() {
+		return &VAO;
+	}
 private: 
 	vector<glm::vec3 *> vertexList;
 	vector<glm::vec2 *> textureList;
 	vector<glm::vec3 *> normalList;
 	vector<glm::vec3 *> faceList;
 	vector<float> data;
+	GLuint VAO;
 };
 

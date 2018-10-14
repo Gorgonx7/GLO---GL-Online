@@ -5,7 +5,7 @@
 #include <glm/glm.hpp>
 #include <vector>
 #include <string>
-GLuint m_VAB;
+GLuint VAO;
 vector<GLuint> BufferObjects;
 vector<glm::vec3 *> vertexList;
 vector<glm::vec2 *> textureList;
@@ -86,8 +86,8 @@ modelLoader::modelLoader(const char * pModelName)
 		vector<glm::vec3> processedObjects;
 		for (int x = 0; x < modelLoader::faceList.size(); x++) {
 			float position	= modelLoader::faceList[x]->x;
-			float normal	= modelLoader::faceList[x]->y;
-			float texture	= modelLoader::faceList[x]->z;
+			float normal	= modelLoader::faceList[x]->z;
+			float texture	= modelLoader::faceList[x]->y;
 			float * vertex	= new float[8];
 			// check to see if this vector has already been created if it has index the shit out of it
 			bool exit = false;
@@ -103,18 +103,18 @@ modelLoader::modelLoader(const char * pModelName)
 				continue;
 			}
 			// add the vertex Position
-			modelLoader::data.push_back(modelLoader::vertexList[position]->x);
-			modelLoader::data.push_back(modelLoader::vertexList[position]->y);
-			modelLoader::data.push_back(modelLoader::vertexList[position]->z);
+			modelLoader::data.push_back(modelLoader::vertexList[position - 1]->x);
+			modelLoader::data.push_back(modelLoader::vertexList[position - 1]->y);
+			modelLoader::data.push_back(modelLoader::vertexList[position - 1]->z);
 			// add the normal
-			modelLoader::data.push_back(modelLoader::normalList[normal]->x);
-			modelLoader::data.push_back(modelLoader::normalList[normal]->y);
-			modelLoader::data.push_back(modelLoader::normalList[normal]->z);
+			modelLoader::data.push_back(modelLoader::normalList[normal - 1]->x);
+			modelLoader::data.push_back(modelLoader::normalList[normal - 1]->y);
+			modelLoader::data.push_back(modelLoader::normalList[normal - 1]->z);
 			// add the texture coords
-			modelLoader::data.push_back(modelLoader::textureList[texture]->x);
-			modelLoader::data.push_back(modelLoader::textureList[texture]->y);
-			indexes.push_back(x);
-
+			modelLoader::data.push_back(modelLoader::textureList[texture - 1]->x);
+			modelLoader::data.push_back(modelLoader::textureList[texture - 1]->y);
+			indexes.push_back(indexes.size());
+			processedObjects.push_back(*faceList[x]);
 		}
 	}
 }
@@ -142,15 +142,18 @@ modelLoader::modelLoader(const char * pModelName, const bool pLoadFile) {
 	{
 		throw new exception("Index data not loaded onto graphics card correctly");
 	}
-	glGenVertexArrays(1, &m_VAB);
-	glBindVertexArray(m_VAB);
+	glGenVertexArrays(1, &VAO);
+	glBindVertexArray(VAO);
 	glBindBuffer(GL_ARRAY_BUFFER, buffers[0]);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffers[1]);
 	// idea have a library of shader locations, so that I can just directly call them and it will be set for all
 	// shaders within the shader library
-
+	GLintptr TextureCoords = (6 * sizeof(float));
+	GLintptr NormalCoords = (3 * sizeof(float));
 	glVertexAttribPointer(0, 3, GL_FLOAT, false, 3 * sizeof(float), 0);
-	glVertexAttribPointer(1, 3, GL_FLOAT, true,	 3 * sizeof(float), );
+	glVertexAttribPointer(1, 3, GL_FLOAT, true,	 3 * sizeof(float), (GLvoid *)NormalCoords);
+	glVertexAttribPointer(2, 3, GL_FLOAT, false, 2 * sizeof(float), (GLvoid *)TextureCoords);
+
 }
 
 

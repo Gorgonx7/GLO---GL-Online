@@ -3,6 +3,7 @@
 #include "Connection.h"
 #include "modelLoader.h"
 Shader * m_Shader;
+modelLoader * test;
 // remember don't create any variables here before the gl context is created
 // otherwise you will get invalid memory access exception
 
@@ -70,7 +71,7 @@ void onLoad() {
 	// You can unbind the VAO afterwards so other VAO calls won't accidentally modify this VAO, but this rarely happens. Modifying other
 	// VAOs requires a call to glBindVertexArray anyways so we generally don't unbind VAOs (nor VBOs) when it's not directly necessary.
 	glBindVertexArray(0);
-	modelLoader test("models/utah-teapot.obj");
+	test = new modelLoader ("models/utah-teapot.obj");
 	
 }
 
