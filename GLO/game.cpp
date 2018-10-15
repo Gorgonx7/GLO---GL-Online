@@ -3,9 +3,15 @@
 #include "Connection.h"
 #include "modelLoader.h"
 #include "Model.h"
+#include <glm/glm.hpp>
+#define GLM_ENABLE_EXPERIMENTAL
+#include <glm/gtx/transform.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 Shader * m_Shader;
 modelLoader * test;
 Model * firstModel;
+glm::mat4 position;
 // remember don't create any variables here before the gl context is created
 // otherwise you will get invalid memory access exception
 
@@ -27,6 +33,7 @@ unsigned int VBO, VAO, EBO;
 
 void draw() {
 	GLuint m_ColourLocation = glGetUniformLocation(m_Shader->m_ShaderID, "pColour");
+	GLuint m_PositionLocation = glGetUniformLocation(m_Shader->m_ShaderID, "uPosition");
 	// render
 		// ------
 	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
@@ -35,6 +42,7 @@ void draw() {
 	// draw our first triangle
 	glUseProgram(m_Shader->m_ShaderID);
 
+	glUniformMatrix4fv(m_PositionLocation, 2, GL_FALSE, glm::value_ptr(position));
 	glUniform4f(m_ColourLocation, 1, 0, 0, 1);
 	glBindVertexArray(VAO); // seeing as we only have a single VAO there's no need to bind it every time, but we'll do so to keep things a bit more organized
 							//glDrawArrays(GL_TRIANGLES, 0, 6);
@@ -70,9 +78,10 @@ void onLoad() {
 
 	// remember: do NOT unbind the EBO while a VAO is active as the bound element buffer object IS stored in the VAO; keep the EBO bound.
 	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-
-	// You can unbind the VAO afterwards so other VAO calls won't accidentally modify this VAO, but this rarely happens. Modifying other
+	//Matrix4.CreateScale(0.1f) *Matrix4.CreateTranslation(0, 0, -5f) * Matrix4.CreateTranslation(3f, 4, -0.5f)
+	position = glm::scale(glm::vec3(0.1f, 0.1f, 0.1f)) * glm::translate(glm::vec3(0,0,-5)) * glm::translate(glm::vec3(3,4,-0.5f));	// You can unbind the VAO afterwards so other VAO calls won't accidentally modify this VAO, but this rarely happens. Modifying other
 	// VAOs requires a call to glBindVertexArray anyways so we generally don't unbind VAOs (nor VBOs) when it's not directly necessary.
+	
 	glBindVertexArray(0);
 	test = new modelLoader ("models/utah-teapot.obj");
 	firstModel = new Model();
