@@ -85,13 +85,19 @@ modelLoader::modelLoader(const char * pModelName)
 		vector<GLuint> indexes;
 		vector<glm::vec3> processedObjects;
 		for (int x = 0; x < modelLoader::faceList.size(); x++) {
+			// check for indexing before we start
+		}
+		for (int x = 0; x < modelLoader::faceList.size(); x++) {
 			float position	= modelLoader::faceList[x]->x;
-			float normal	= modelLoader::faceList[x]->z;
 			float texture	= modelLoader::faceList[x]->y;
+			float normal	= modelLoader::faceList[x]->z;
+			
 			float * vertex	= new float[8];
 			// check to see if this vector has already been created if it has index the shit out of it
 			bool exit = false;
 			for(int y = 0; y < processedObjects.size(); y++) {
+				// this takes too long, we need to scan for this in advance, no point in scanning the list more than once,
+
 				if (processedObjects[y].x == position && processedObjects[y].y == normal && processedObjects[y].z == texture) 
 				{
 					indexes.push_back(y);
@@ -150,9 +156,9 @@ modelLoader::modelLoader(const char * pModelName, const bool pLoadFile) {
 	// shaders within the shader library
 	GLintptr TextureCoords = (6 * sizeof(float));
 	GLintptr NormalCoords = (3 * sizeof(float));
-	glVertexAttribPointer(0, 3, GL_FLOAT, false, 3 * sizeof(float), 0);
-	glVertexAttribPointer(1, 3, GL_FLOAT, true,	 3 * sizeof(float), (GLvoid *)NormalCoords);
-	glVertexAttribPointer(2, 3, GL_FLOAT, false, 2 * sizeof(float), (GLvoid *)TextureCoords);
+	glVertexAttribPointer(0, 3, GL_FLOAT, false, 8 * sizeof(float), 0);
+	glVertexAttribPointer(1, 3, GL_FLOAT, true,	 8 * sizeof(float), (GLvoid *)NormalCoords);
+	glVertexAttribPointer(2, 3, GL_FLOAT, false, 8 * sizeof(float), (GLvoid *)TextureCoords);
 
 }
 

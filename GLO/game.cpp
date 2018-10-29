@@ -38,7 +38,7 @@ void draw() {
 		// ------
 	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
-	position = position * glm::rotate(0.01f, glm::vec3(position[3]));
+	position = position * glm::rotate(0.1f, glm::vec3(position[3]));
 	// draw our first triangle
 	glUseProgram(m_Shader->m_ShaderID);
 
@@ -48,7 +48,7 @@ void draw() {
 							//glDrawArrays(GL_TRIANGLES, 0, 6);
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 	firstModel->Draw();
-	// glBindVertexArray(0); // no need to unbind it every time 
+	//glBindVertexArray(0); // no need to unbind it every time 
 }
 
 void update() {
@@ -77,12 +77,12 @@ void onLoad() {
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 	// remember: do NOT unbind the EBO while a VAO is active as the bound element buffer object IS stored in the VAO; keep the EBO bound.
-	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	//Matrix4.CreateScale(0.1f) *Matrix4.CreateTranslation(0, 0, -5f) * Matrix4.CreateTranslation(3f, 4, -0.5f)
 	position = glm::scale(glm::vec3(0.1,0.1,0.1)) * glm::translate(glm::vec3(0, 0, -5)) * glm::translate(glm::vec3(3, 4, -0.5f));	// You can unbind the VAO afterwards so other VAO calls won't accidentally modify this VAO, but this rarely happens. Modifying other
 	// VAOs requires a call to glBindVertexArray anyways so we generally don't unbind VAOs (nor VBOs) when it's not directly necessary.
 	
-	glBindVertexArray(0);
+	//glBindVertexArray(0);
 	test = new modelLoader ("models/utah-teapot.obj");
 	firstModel = new Model();
 	firstModel->setModelLoader(test);
