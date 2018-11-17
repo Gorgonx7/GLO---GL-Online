@@ -9,7 +9,11 @@ class modelLoader
 public:
 	modelLoader(const char * pModelName);
 	modelLoader(const char * pModelName, const bool pLoadFile);
+	modelLoader();
 	~modelLoader();
+
+	void ExampleLoad(const char * path, std::vector<glm::vec3> & out_vertices, std::vector<glm::vec2> & out_uvs, std::vector<glm::vec3> & out_normals);
+
 	const vector<glm::vec3 *>  const * getVertexList() {
 		return &vertexList;
 	};
