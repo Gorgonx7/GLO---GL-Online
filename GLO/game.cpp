@@ -8,14 +8,33 @@
 #include <glm/gtx/transform.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include "objLoader.h"
+#include <vector>
 Shader * m_Shader;
 modelLoader * test;
 Model * firstModel;
 glm::mat4 position;
+double lastTime;
+int nbFrames = 0;
+GLuint MatrixID;
+GLuint ViewMatrixID;
+GLuint ModelMatrixID;
 // remember don't create any variables here before the gl context is created
 // otherwise you will get invalid memory access exception
+vector<GLuint*> bufferHolder;
+/*Camera Constants*/
+// Initial position : on +Z
+glm::vec3 position = glm::vec3(0, 0, 5);
+// Initial horizontal angle : toward -Z
+float horizontalAngle = 3.14f;
+// Initial vertical angle : none
+float verticalAngle = 0.0f;
+// Initial Field of View
+float initialFoV = 45.0f;
 
-
+float speed = 3.0f; // 3 units / second
+float mouseSpeed = 0.005f;
+/*End of Camera Constants*/
 // set up vertex data (and buffer(s)) and configure vertex attributes
 // ------------------------------------------------------------------
 float vertices[] = {
@@ -32,23 +51,36 @@ unsigned int VBO, VAO, EBO;
 
 
 void draw() {
-	GLuint m_ColourLocation = glGetUniformLocation(m_Shader->m_ShaderID, "pColour");
-	GLuint m_PositionLocation = glGetUniformLocation(m_Shader->m_ShaderID, "uPosition");
-	// render
-		// ------
-	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-	glClear(GL_COLOR_BUFFER_BIT);
-	//position = position * glm::rotate(0.1f, glm::vec3(position[3]));
-	// draw our first triangle
+	// Measure speed
+	double currentTime = glfwGetTime();
+	nbFrames++;
+	if (currentTime - lastTime >= 1.0) { // If last prinf() was more than 1sec ago
+										 // printf and reset
+		printf("%f ms/frame\n", 1000.0 / double(nbFrames));
+		nbFrames = 0;
+		lastTime += 1.0;
+	}
+	// Clear the screen
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+	// Use our shader
 	glUseProgram(m_Shader->m_ShaderID);
 
-	glUniformMatrix4fv(m_PositionLocation, 1, GL_FALSE, glm::value_ptr(position));
-	glUniform4f(m_ColourLocation, 1, 0, 0, 1);
-	glBindVertexArray(VAO); // seeing as we only have a single VAO there's no need to bind it every time, but we'll do so to keep things a bit more organized
-							//glDrawArrays(GL_TRIANGLES, 0, 6);
-	//glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-	firstModel->Draw();
-	//glBindVertexArray(0); // no need to unbind it every time 
+	// Compute the MVP matrix from keyboard and mouse input
+	
+	glm::mat4 ProjectionMatrix = getProjectionMatrix();
+	glm::mat4 ViewMatrix = getViewMatrix();
+	glm::mat4 ModelMatrix = glm::mat4(1.0);
+	glm::mat4 MVP = ProjectionMatrix * ViewMatrix * ModelMatrix;
+	// Index buffer
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, *bufferHolder[1]);
+	// Draw the triangles !
+	glDrawElements(
+		GL_TRIANGLES,      // mode
+		indices.size(),    // count
+		GL_UNSIGNED_SHORT,   // type
+		(void*)0           // element array buffer offset
+	);
 }
 
 void update() {
@@ -57,35 +89,41 @@ void update() {
 
 void onLoad() {
 	m_Shader = new Shader("Simple.vert", "Simple.frag");
-	glGenVertexArrays(1, &VAO);
-	glGenBuffers(1, &VBO);
-	glGenBuffers(1, &EBO);
-	// bind the Vertex Array Object first, then bind and set vertex buffer(s), and then configure vertex attributes(s).
-	glBindVertexArray(VAO);
+	objl::Loader loader;
+	loader.LoadFile("models/utah-teapot.obj");
+	for (int x = 0; x < loader.LoadedMeshes.size(); x++) {
+		objl::Mesh curMesh = loader.LoadedMeshes[x];
+		GLuint * holder = new GLuint[2];
+		glGenBuffers(2, holder);
+		bufferHolder.push_back(&holder[0]);
+		bufferHolder.push_back(&holder[1]);
+		glBindBuffer(GL_ARRAY_BUFFER, *bufferHolder[0]);
+		glBufferData(GL_ARRAY_BUFFER, curMesh.Vertices.size() * sizeof(glm::vec3), &curMesh.Vertices[0], GL_STATIC_DRAW);
+		
+		// element buffer
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, *bufferHolder[1]);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, curMesh.Indices.size() * sizeof(unsigned int), &curMesh.Indices[0], GL_STATIC_DRAW);
 
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+		glEnableVertexAttribArray(1);
+		// 1rst attribute buffer : vertices
+		glEnableVertexAttribArray(1);
+		glBindBuffer(GL_ARRAY_BUFFER, *bufferHolder[0]);
+		glVertexAttribPointer(
+			0,                  // attribute
+			3,                  // size
+			GL_FLOAT,           // type
+			GL_FALSE,           // normalized?
+			0,                  // stride
+			(void*)0            // array buffer offset
+		);
 
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-	glEnableVertexAttribArray(0);
-
-
-	// note that this is allowed, the call to glVertexAttribPointer registered VBO as the vertex attribute's bound vertex buffer object so afterwards we can safely unbind
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-
-	// remember: do NOT unbind the EBO while a VAO is active as the bound element buffer object IS stored in the VAO; keep the EBO bound.
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-	//Matrix4.CreateScale(0.1f) *Matrix4.CreateTranslation(0, 0, -5f) * Matrix4.CreateTranslation(3f, 4, -0.5f)
-	position = glm::scale(glm::vec3(.1f,.1f,.1f)) * glm::translate(glm::vec3(0, 0, -5.f)) * glm::translate(glm::vec3(3.f, 4, -0.5f));	// You can unbind the VAO afterwards so other VAO calls won't accidentally modify this VAO, but this rarely happens. Modifying other
-	// VAOs requires a call to glBindVertexArray anyways so we generally don't unbind VAOs (nor VBOs) when it's not directly necessary.
+	}
 	
-	glBindVertexArray(0);
-	test = new modelLoader ("models/utah-teapot.obj");
-	firstModel = new Model();
-	firstModel->setModelLoader(test);
+	ModelMatrixID = glGetUniformLocation(m_Shader->m_ShaderID, "M");
+	ViewMatrixID = glGetUniformLocation(m_Shader->m_ShaderID, "V");
+	ModelMatrixID = glGetUniformLocation(m_Shader->m_ShaderID, "M");
+
+	lastTime = glfwGetTime();
 }
 
 void unLoad() {

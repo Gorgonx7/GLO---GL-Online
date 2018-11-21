@@ -83,6 +83,9 @@
     <ClInclude Include="modelLoader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="objLoader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Simple.vert">

@@ -6,6 +6,7 @@
 #include <vector>
 #include <string>
 
+#define _CRT_SECURE_NO_WARRNINGS
 vector<GLuint> BufferObjects;
 vector<glm::vec3 *> vertexList;
 vector<glm::vec2 *> textureList;
@@ -164,11 +165,13 @@ modelLoader::modelLoader(const char * pModelName, const bool pLoadFile) {
 		5 * sizeof(float),                  // stride
 		(void*)0            // array buffer offset
 	);
+	glEnableVertexAttribArray(1);
 	glVertexAttribPointer(1, 3, GL_FLOAT, GL_TRUE,	 3 * sizeof(float),0);
+	glEnableVertexAttribArray(2);
 	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 6 * sizeof(float), 0);
 
 }
-void modelLoader::ExampleLoad(
+/*void modelLoader::ExampleLoad(
 	const char * path,
 	std::vector<glm::vec3> & out_vertices,
 	std::vector<glm::vec2> & out_uvs,
@@ -182,7 +185,7 @@ void modelLoader::ExampleLoad(
 	std::vector<glm::vec3> temp_normals;
 
 
-	FILE * file = fopen(path, "r");
+
 	if (file == NULL) {
 		printf("Impossible to open the file ! Are you in the right path ? See Tutorial 1 for details\n");
 		getchar();
@@ -263,7 +266,7 @@ void modelLoader::ExampleLoad(
 	}
 	fclose(file);
 	return;
-}
+}*/
 
 modelLoader::~modelLoader()
 {

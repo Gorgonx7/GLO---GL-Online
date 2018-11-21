@@ -38,6 +38,7 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="modelLoader.h" />
+    <ClInclude Include="objLoader.h" />
     <ClInclude Include="Propertie.h" />
     <ClInclude Include="sGameObject.h" />
     <ClInclude Include="Shader.h" />
