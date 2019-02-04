@@ -54,6 +54,9 @@
     <ClCompile Include="modelLoader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="W:\repos\ogl-master\common\simpleObjLoader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Connection.h">
@@ -84,6 +87,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="objLoader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="W:\repos\ogl-master\common\simpleObjLoader.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -11,9 +11,7 @@
 #include "objLoader.h"
 #include <vector>
 Shader * m_Shader;
-modelLoader * test;
-Model * firstModel;
-glm::mat4 position;
+glm::mat4 m_position;
 double lastTime;
 int nbFrames = 0;
 GLuint MatrixID;
@@ -34,108 +32,111 @@ float initialFoV = 45.0f;
 
 float speed = 3.0f; // 3 units / second
 float mouseSpeed = 0.005f;
+GLuint vertexbuffer;
+glm::mat4 MVP;
 /*End of Camera Constants*/
 // set up vertex data (and buffer(s)) and configure vertex attributes
 // ------------------------------------------------------------------
-float vertices[] = {
-	0.5f,  0.5f, 0.0f,  // top right
-	0.5f, -0.5f, 0.0f,  // bottom right
-	-0.5f, -0.5f, 0.0f,  // bottom left
-	-0.5f,  0.5f, 0.0f   // top left 
+static const GLfloat g_vertex_buffer_data[] = {
+		-1.0f, -1.0f, 0.0f,
+		 1.0f, -1.0f, 0.0f,
+		 0.0f,  1.0f, 0.0f,
 };
-unsigned int indices[] = {  // note that we start from 0!
-	0, 1, 3,  // first Triangle
-	1, 2, 3   // second Triangle
-};
-unsigned int VBO, VAO, EBO;
+
+
 
 
 void draw() {
-	// Measure speed
-	double currentTime = glfwGetTime();
-	nbFrames++;
-	if (currentTime - lastTime >= 1.0) { // If last prinf() was more than 1sec ago
-										 // printf and reset
-		printf("%f ms/frame\n", 1000.0 / double(nbFrames));
-		nbFrames = 0;
-		lastTime += 1.0;
-	}
 	// Clear the screen
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glClear(GL_COLOR_BUFFER_BIT);
 
-	// Use our shader
-	glUseProgram(m_Shader->m_ShaderID);
+	// Send our transformation to the currently bound shader, 
+	// in the "MVP" uniform
+	glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &MVP[0][0]);
 
-	// Compute the MVP matrix from keyboard and mouse input
-	
-	glm::mat4 ProjectionMatrix = getProjectionMatrix();
-	glm::mat4 ViewMatrix = getViewMatrix();
-	glm::mat4 ModelMatrix = glm::mat4(1.0);
-	glm::mat4 MVP = ProjectionMatrix * ViewMatrix * ModelMatrix;
-	// Index buffer
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, *bufferHolder[1]);
-	// Draw the triangles !
-	glDrawElements(
-		GL_TRIANGLES,      // mode
-		indices.size(),    // count
-		GL_UNSIGNED_SHORT,   // type
-		(void*)0           // element array buffer offset
+	// 1rst attribute buffer : vertices
+	glEnableVertexAttribArray(0);
+	glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
+	glVertexAttribPointer(
+		0,                  // attribute. No particular reason for 0, but must match the layout in the shader.
+		3,                  // size
+		GL_FLOAT,           // type
+		GL_FALSE,           // normalized?
+		0,                  // stride
+		(void*)0            // array buffer offset
 	);
+
+	// Draw the triangle !
+	glDrawArrays(GL_TRIANGLES, 0, 3); // 3 indices starting at 0 -> 1 triangle
+
+	glDisableVertexAttribArray(0);
 }
 
 void update() {
-
+	// Draw the triangle !
+	glDrawArrays(GL_TRIANGLES, 0, 3); // 3 indices starting at 0 -> 1 triangle
+	
 }
 
 void onLoad() {
-	m_Shader = new Shader("Simple.vert", "Simple.frag");
-	objl::Loader loader;
-	loader.LoadFile("models/utah-teapot.obj");
-	for (int x = 0; x < loader.LoadedMeshes.size(); x++) {
-		objl::Mesh curMesh = loader.LoadedMeshes[x];
-		GLuint * holder = new GLuint[2];
-		glGenBuffers(2, holder);
-		bufferHolder.push_back(&holder[0]);
-		bufferHolder.push_back(&holder[1]);
-		glBindBuffer(GL_ARRAY_BUFFER, *bufferHolder[0]);
-		glBufferData(GL_ARRAY_BUFFER, curMesh.Vertices.size() * sizeof(glm::vec3), &curMesh.Vertices[0], GL_STATIC_DRAW);
-		
-		// element buffer
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, *bufferHolder[1]);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, curMesh.Indices.size() * sizeof(unsigned int), &curMesh.Indices[0], GL_STATIC_DRAW);
+	GLuint VertexArrayID;
+	glGenVertexArrays(1, &VertexArrayID);
+	glBindVertexArray(VertexArrayID);
 
-		glEnableVertexAttribArray(1);
-		// 1rst attribute buffer : vertices
-		glEnableVertexAttribArray(1);
-		glBindBuffer(GL_ARRAY_BUFFER, *bufferHolder[0]);
-		glVertexAttribPointer(
-			0,                  // attribute
-			3,                  // size
-			GL_FLOAT,           // type
-			GL_FALSE,           // normalized?
-			0,                  // stride
-			(void*)0            // array buffer offset
-		);
+	// Create and compile our GLSL program from the shaders
+	Shader shader = Shader("Simple.vert", "Simple.frag");
+	glGenBuffers(1, &vertexbuffer);
+	glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(g_vertex_buffer_data), g_vertex_buffer_data, GL_STATIC_DRAW);
+	// Clear the screen
+	glClear(GL_COLOR_BUFFER_BIT);
 
-	}
+	// Use our shader
+	glUseProgram(shader.m_ShaderID);
+
+	// 1rst attribute buffer : vertices
+	glEnableVertexAttribArray(0);
+	glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
+	glVertexAttribPointer(
+		0,                  // attribute 0. No particular reason for 0, but must match the layout in the shader.
+		3,                  // size
+		GL_FLOAT,           // type
+		GL_FALSE,           // normalized?
+		0,                  // stride
+		(void*)0            // array buffer offset
+	);
+	// Dark blue background
+	glClearColor(0.0f, 0.0f, 0.4f, 0.0f);
+
+	// Get a handle for our "MVP" uniform
+	GLuint MatrixID = glGetUniformLocation(shader.m_ShaderID, "MVP");
+
+	// Projection matrix : 45° Field of View, 4:3 ratio, display range : 0.1 unit <-> 100 units
+	glm::mat4 Projection = glm::perspective(glm::radians(45.0f), 4.0f / 3.0f, 0.1f, 100.0f);
+	// Or, for an ortho camera :
+	//glm::mat4 Projection = glm::ortho(-10.0f,10.0f,-10.0f,10.0f,0.0f,100.0f); // In world coordinates
+
+	// Camera matrix
+	glm::mat4 View = glm::lookAt(
+		glm::vec3(4, 3, 3), // Camera is at (4,3,3), in World Space
+		glm::vec3(0, 0, 0), // and looks at the origin
+		glm::vec3(0, 1, 0)  // Head is up (set to 0,-1,0 to look upside-down)
+	);
+	// Model matrix : an identity matrix (model will be at the origin)
+	glm::mat4 Model = glm::mat4(1.0f);
+	// Our ModelViewProjection : multiplication of our 3 matrices
+	MVP = Projection * View * Model; // Remember, matrix multiplication is the other way around
+
 	
-	ModelMatrixID = glGetUniformLocation(m_Shader->m_ShaderID, "M");
-	ViewMatrixID = glGetUniformLocation(m_Shader->m_ShaderID, "V");
-	ModelMatrixID = glGetUniformLocation(m_Shader->m_ShaderID, "M");
-
-	lastTime = glfwGetTime();
 }
 
 void unLoad() {
-	glDeleteVertexArrays(1, &VAO);
-	glDeleteBuffers(1, &VBO);
-	glDeleteBuffers(1, &EBO);
+	
 }
 
 void sendOpinion()
 {
-	Connection * m_connection = new Connection();
-	delete m_connection;
+	
 }
 
 void getAnswer()

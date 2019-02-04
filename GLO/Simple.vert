@@ -1,9 +1,15 @@
 #version 330 core
-layout (location = 0) in vec3 aPos;
-uniform mat4 uPosition;
-void main()
-{
-   vec4 holder  = vec4(aPos.x, aPos.y, aPos.z, 1.0);
-   holder = holder; //* uPosition;
-   gl_Position = holder;
-}
+
+
+// Input vertex data, different for all executions of this shader.
+layout(location = 0) in vec3 vertexPosition_modelspace;
+
+// Values that stay constant for the whole mesh.
+uniform mat4 MVP;
+
+void main(){
+
+	// Output position of the vertex, in clip space : MVP * position
+	gl_Position =  MVP * vec4(vertexPosition_modelspace,1);
+
+} 

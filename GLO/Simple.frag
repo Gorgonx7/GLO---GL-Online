@@ -1,7 +1,19 @@
 #version 330 core
-out vec4 FragColor;
-uniform vec4 pColour;
+
+// Ouput data
+out vec3 color;
+
 void main()
 {
-   FragColor = pColour;
+
+	// Output color = red 
+	color = vec3(1,0,0);
+
 }
+
+//out vec4 FragColor;
+//uniform vec4 pColour;
+//void main()
+//{
+  // FragColor = pColour;
+//}

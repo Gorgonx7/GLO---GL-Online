@@ -30,6 +30,7 @@
     <ClCompile Include="Propertie.cpp" />
     <ClCompile Include="sGameObject.cpp" />
     <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="W:\repos\ogl-master\common\simpleObjLoader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Connection.h" />
@@ -42,6 +43,7 @@
     <ClInclude Include="Propertie.h" />
     <ClInclude Include="sGameObject.h" />
     <ClInclude Include="Shader.h" />
+    <ClInclude Include="W:\repos\ogl-master\common\simpleObjLoader.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Simple.frag" />

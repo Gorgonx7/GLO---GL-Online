@@ -17,6 +17,8 @@
 #include <iostream>
 #include "Shader.h"
 #include "Connection.h"
+#include <glm/glm.hpp>
+using namespace glm;
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow *window);
@@ -28,8 +30,7 @@ const unsigned int SCR_HEIGHT = 600;
 
 
 
-int main()
-{
+int main(){
 	
 	// glfw: initialize and configure
 	// ------------------------------
