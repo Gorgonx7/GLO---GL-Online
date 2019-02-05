@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="Connection.cpp" />
     <ClCompile Include="connectionManager.cpp" />
+    <ClCompile Include="controls.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="glad.c" />
@@ -30,11 +31,13 @@
     <ClCompile Include="Propertie.cpp" />
     <ClCompile Include="sGameObject.cpp" />
     <ClCompile Include="Shader.cpp" />
-    <ClCompile Include="W:\repos\ogl-master\common\simpleObjLoader.cpp" />
+    <ClCompile Include="simpleObjLoader.cpp" />
+    <ClCompile Include="texture.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Connection.h" />
     <ClInclude Include="connectionManager.h" />
+    <ClInclude Include="controls.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Model.h" />
@@ -43,7 +46,8 @@
     <ClInclude Include="Propertie.h" />
     <ClInclude Include="sGameObject.h" />
     <ClInclude Include="Shader.h" />
-    <ClInclude Include="W:\repos\ogl-master\common\simpleObjLoader.hpp" />
+    <ClInclude Include="simpleObjLoader.h" />
+    <ClInclude Include="texture.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Simple.frag" />

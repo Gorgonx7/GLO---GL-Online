@@ -54,7 +54,13 @@
     <ClCompile Include="modelLoader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="W:\repos\ogl-master\common\simpleObjLoader.cpp">
+    <ClCompile Include="controls.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="texture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="simpleObjLoader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -89,7 +95,13 @@
     <ClInclude Include="objLoader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="W:\repos\ogl-master\common\simpleObjLoader.hpp">
+    <ClInclude Include="controls.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="texture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="simpleObjLoader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
