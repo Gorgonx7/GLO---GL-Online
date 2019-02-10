@@ -3,8 +3,8 @@
 #include <string.h>
 
 #include <GL/glew.h>
-
 #include <GLFW/glfw3.h>
+
 #define GLM_ENABLE_EXPERIMENTAL
 #pragma warning(disable : 4996)
 GLuint loadBMP_custom(const char * imagepath){
@@ -169,6 +169,7 @@ GLuint loadDDS(const char * imagepath){
 	switch(fourCC) 
 	{ 
 	case FOURCC_DXT1: 
+		
 		format = GL_COMPRESSED_RGBA_S3TC_DXT1_EXT; 
 		break; 
 	case FOURCC_DXT3: 
@@ -181,7 +182,7 @@ GLuint loadDDS(const char * imagepath){
 		free(buffer); 
 		return 0; 
 	}
-
+	
 	// Create one OpenGL texture
 	GLuint textureID;
 	glGenTextures(1, &textureID);

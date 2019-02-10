@@ -1,5 +1,7 @@
 #pragma once
 #include <glad/glad.h>
+#include <GLFW/glfw3.h>
+
 #define GLM_ENABLE_EXPERIMENTAL
 // Load a .BMP file using our custom loader
 GLuint loadBMP_custom(const char * imagepath);
