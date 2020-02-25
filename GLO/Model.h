@@ -12,9 +12,16 @@
  */
 
 #pragma once
+#include <glm/glm.hpp>
+#include <vector>
+#include <iostream>
 
 class Model {
 public:
+    std::vector<glm::vec3> indicies;
+    std::vector<glm::vec3> vertex;
+    std::vector<glm::vec2> textureCoords;
+    std::vector<glm::vec3> Normals;
     Model();
     Model(const Model& orig);
     virtual ~Model();

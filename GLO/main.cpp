@@ -116,8 +116,7 @@ int main()
 		// input
 		// -----
 		processInput(window);
-		Connection * m_connection = new Connection();
-		delete m_connection;
+		
 		// render
 		// ------
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);

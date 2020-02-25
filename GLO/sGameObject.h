@@ -24,7 +24,7 @@ public:
     virtual ~sGameObject();
 protected:
     glm::vec3 m_Position;
-    glm::mat4 m_ModelMatrix;
+
     
 private:
 
