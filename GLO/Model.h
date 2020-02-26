@@ -15,18 +15,17 @@
 #include <glm/glm.hpp>
 #include <vector>
 #include <iostream>
-
+#include "OBJ_Loader.h"
+#include "ModelLoader.h"
 class Model {
 public:
-    std::vector<glm::vec3> indicies;
-    std::vector<glm::vec3> vertex;
-    std::vector<glm::vec2> textureCoords;
-    std::vector<glm::vec3> Normals;
-    Model();
+    std::vector<objl::Mesh> Meshes;
+    ModelLoader* loader;
+    Model(std::string FileLoc);
     Model(const Model& orig);
     virtual ~Model();
 private:
-
+    std::string fileLoc;
 };
 
 

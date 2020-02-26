@@ -12,11 +12,17 @@
  */
 
 #include "Model.h"
-
-Model::Model() {
+#include "ModelLoader.h"
+Model::Model(std::string fileLoc) {
+    Model::fileLoc = fileLoc;
+    loader = new ModelLoader(Model::fileLoc);
+    Meshes = loader->GetModel();
 }
 
 Model::Model(const Model& orig) {
+    Model::fileLoc = orig.fileLoc;
+    loader = new ModelLoader(Model::fileLoc);
+    Meshes = loader->GetModel();
 }
 
 Model::~Model() {
