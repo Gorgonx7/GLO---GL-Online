@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27428.2037
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GLO", "GLO\GLO.vcxproj", "{69961DD4-5979-4317-9935-7FDC22CF93B2}"
 EndProject
@@ -13,12 +13,18 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GLOServer", "GLOServer\GLOS
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		CMake|x64 = CMake|x64
+		CMake|x86 = CMake|x86
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{69961DD4-5979-4317-9935-7FDC22CF93B2}.CMake|x64.ActiveCfg = CMake|x64
+		{69961DD4-5979-4317-9935-7FDC22CF93B2}.CMake|x64.Build.0 = CMake|x64
+		{69961DD4-5979-4317-9935-7FDC22CF93B2}.CMake|x86.ActiveCfg = Debug|Win32
+		{69961DD4-5979-4317-9935-7FDC22CF93B2}.CMake|x86.Build.0 = Debug|Win32
 		{69961DD4-5979-4317-9935-7FDC22CF93B2}.Debug|x64.ActiveCfg = Debug|x64
 		{69961DD4-5979-4317-9935-7FDC22CF93B2}.Debug|x64.Build.0 = Debug|x64
 		{69961DD4-5979-4317-9935-7FDC22CF93B2}.Debug|x86.ActiveCfg = Debug|Win32
@@ -27,6 +33,10 @@ Global
 		{69961DD4-5979-4317-9935-7FDC22CF93B2}.Release|x64.Build.0 = Release|x64
 		{69961DD4-5979-4317-9935-7FDC22CF93B2}.Release|x86.ActiveCfg = Release|Win32
 		{69961DD4-5979-4317-9935-7FDC22CF93B2}.Release|x86.Build.0 = Release|Win32
+		{701656DE-DFCE-43DB-8F20-405A0972D580}.CMake|x64.ActiveCfg = CMake|x64
+		{701656DE-DFCE-43DB-8F20-405A0972D580}.CMake|x64.Build.0 = CMake|x64
+		{701656DE-DFCE-43DB-8F20-405A0972D580}.CMake|x86.ActiveCfg = Debug|Win32
+		{701656DE-DFCE-43DB-8F20-405A0972D580}.CMake|x86.Build.0 = Debug|Win32
 		{701656DE-DFCE-43DB-8F20-405A0972D580}.Debug|x64.ActiveCfg = Debug|x64
 		{701656DE-DFCE-43DB-8F20-405A0972D580}.Debug|x64.Build.0 = Debug|x64
 		{701656DE-DFCE-43DB-8F20-405A0972D580}.Debug|x86.ActiveCfg = Debug|Win32
@@ -35,6 +45,10 @@ Global
 		{701656DE-DFCE-43DB-8F20-405A0972D580}.Release|x64.Build.0 = Release|x64
 		{701656DE-DFCE-43DB-8F20-405A0972D580}.Release|x86.ActiveCfg = Release|Win32
 		{701656DE-DFCE-43DB-8F20-405A0972D580}.Release|x86.Build.0 = Release|Win32
+		{E91A301B-2EB6-498F-9885-B43BEF28D081}.CMake|x64.ActiveCfg = CMake|x64
+		{E91A301B-2EB6-498F-9885-B43BEF28D081}.CMake|x64.Build.0 = CMake|x64
+		{E91A301B-2EB6-498F-9885-B43BEF28D081}.CMake|x86.ActiveCfg = Debug|Win32
+		{E91A301B-2EB6-498F-9885-B43BEF28D081}.CMake|x86.Build.0 = Debug|Win32
 		{E91A301B-2EB6-498F-9885-B43BEF28D081}.Debug|x64.ActiveCfg = Debug|x64
 		{E91A301B-2EB6-498F-9885-B43BEF28D081}.Debug|x64.Build.0 = Debug|x64
 		{E91A301B-2EB6-498F-9885-B43BEF28D081}.Debug|x86.ActiveCfg = Debug|Win32
@@ -43,6 +57,10 @@ Global
 		{E91A301B-2EB6-498F-9885-B43BEF28D081}.Release|x64.Build.0 = Release|x64
 		{E91A301B-2EB6-498F-9885-B43BEF28D081}.Release|x86.ActiveCfg = Release|Win32
 		{E91A301B-2EB6-498F-9885-B43BEF28D081}.Release|x86.Build.0 = Release|Win32
+		{88C5655E-5C8A-4949-807D-708BFDB4372C}.CMake|x64.ActiveCfg = CMake|x64
+		{88C5655E-5C8A-4949-807D-708BFDB4372C}.CMake|x64.Build.0 = CMake|x64
+		{88C5655E-5C8A-4949-807D-708BFDB4372C}.CMake|x86.ActiveCfg = Debug|Win32
+		{88C5655E-5C8A-4949-807D-708BFDB4372C}.CMake|x86.Build.0 = Debug|Win32
 		{88C5655E-5C8A-4949-807D-708BFDB4372C}.Debug|x64.ActiveCfg = Debug|x64
 		{88C5655E-5C8A-4949-807D-708BFDB4372C}.Debug|x64.Build.0 = Debug|x64
 		{88C5655E-5C8A-4949-807D-708BFDB4372C}.Debug|x86.ActiveCfg = Debug|Win32
@@ -56,7 +74,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {65A720E5-5E63-49D6-94F1-35000DDF73EA}
 		VisualSVNWorkingCopyRoot = .
+		SolutionGuid = {65A720E5-5E63-49D6-94F1-35000DDF73EA}
 	EndGlobalSection
 EndGlobal

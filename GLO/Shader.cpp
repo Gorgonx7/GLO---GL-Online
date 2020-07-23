@@ -21,10 +21,12 @@
 #include <fstream>
 #include <stdio.h>
 #include <glad/glad.h>
-GLuint m_ShaderID;
+#include <glm/glm.hpp>
+#include <glm\detail\type_mat.hpp>
+
 Shader::Shader(const char * pVertexShader, const char * pFragmentShader) 
 {
-    m_ShaderID = LoadShaders(pVertexShader, pFragmentShader);
+    m_ShaderID = new GLuint(LoadShaders(pVertexShader, pFragmentShader));
     
 }
 
@@ -32,8 +34,32 @@ Shader::Shader(const Shader& orig) {
 }
 
 Shader::~Shader() {
-    glDeleteProgram(m_ShaderID);
+    glDeleteProgram(*m_ShaderID);
 }
+
+void Shader::setBool(const std::string& name, bool value) const
+{
+	glUniform1i(glGetUniformLocation(*m_ShaderID, name.c_str()), (int)value);
+}
+
+void Shader::setInt(const std::string& name, int value) const
+{
+	glUniform1i(glGetUniformLocation(*m_ShaderID, name.c_str()), value);
+}
+
+void Shader::setFloat(const std::string& name, float value) const
+{
+	glUniform1i(glGetUniformLocation(*m_ShaderID, name.c_str()), value);
+}
+
+
+
+void Shader::Use()
+{
+	glUseProgram(*m_ShaderID);
+}
+
+
 
 GLuint Shader::LoadShaders(const char* vertex_file_path, const char* fragment_file_path){
 	
@@ -114,13 +140,12 @@ GLuint Shader::LoadShaders(const char* vertex_file_path, const char* fragment_fi
 		printf("%s\n", &ProgramErrorMessage[0]);
 	}
 	
-	glDetachShader(ProgramID, VertexShaderID);
-	glDetachShader(ProgramID, FragmentShaderID);
+	
 	
 	glDeleteShader(VertexShaderID);
 	glDeleteShader(FragmentShaderID);
 
 	return ProgramID;
 	
-	return 0;
+
 }

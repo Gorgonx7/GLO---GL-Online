@@ -24,4 +24,9 @@ void Hash::hash(T){
     string example = "Example";
    size_t test = std::hash<string>(example);
    cout << test << endl;
-};
+}
+template<class T>
+Hash<T>::~Hash()
+{
+}
+;

@@ -12,12 +12,12 @@
  */
 
 #include "GameObject.h"
-#include "sGameObject.h"
-GameObject::GameObject(glm::vec3 pPosition) : sGameObject(pPosition){
+
+GameObject::GameObject(glm::vec3 pPosition) {
 
 }
 
-GameObject::GameObject(const GameObject& orig) : sGameObject(orig.m_Position)
+GameObject::GameObject(const GameObject& orig)
 {
 }
 

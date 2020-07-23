@@ -11,13 +11,13 @@
  * Created on 04 August 2018, 23:01
  */
 #pragma once
-#include "sGameObject.h"
+
 #include <glm/glm.hpp>
 #include "Propertie.h"
 #include <vector>
-
+#include "Component.h"
 using namespace std;
-class GameObject : public sGameObject {
+class GameObject {
 public:
     GameObject(glm::vec3 pPosition);
     GameObject(const GameObject& orig);
@@ -25,7 +25,7 @@ public:
 private:
    
     vector<IPropertie *> m_Properties;
-    
+    vector<Component> m_Components;
 };
 
 

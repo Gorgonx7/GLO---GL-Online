@@ -1,0 +1,24 @@
+# Blender MTL File: 'human_1.blend'
+# Material Count: 2
+
+newmtl FemaleSkin
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.586938 0.361501
+Ks 0.007547 0.003117 0.002693
+Ke 0.356000 0.261187 0.160868
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd femaleskin
+
+newmtl MaleSkin
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.586938 0.361501
+Ks 0.007547 0.003117 0.002693
+Ke 0.356000 0.261187 0.160868
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd D:\Users\James Gordon\Downloads\maleskin.png

@@ -23,6 +23,15 @@
     <Filter Include="Source Files\util">
       <UniqueIdentifier>{68ac0310-bd9a-4438-a9f5-e33263279c50}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\pipeline">
+      <UniqueIdentifier>{98c8c487-1acd-4bd8-afa3-fe55e5388273}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components">
+      <UniqueIdentifier>{fbe56609-3353-4366-95a1-2418bfa57d04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Shading">
+      <UniqueIdentifier>{3af3fd8e-69db-4960-a2cd-174efbdf5a9f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="connectionManager.cpp">
@@ -40,13 +49,7 @@
     <ClCompile Include="ModelLoader.cpp">
       <Filter>Source Files\Loaders</Filter>
     </ClCompile>
-    <ClCompile Include="sGameObject.cpp">
-      <Filter>Source Files\GameFiles</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
-      <Filter>Source Files\util</Filter>
-    </ClCompile>
-    <ClCompile Include="Propertie.cpp">
       <Filter>Source Files\util</Filter>
     </ClCompile>
     <ClCompile Include="glad.c">
@@ -54,6 +57,39 @@
     </ClCompile>
     <ClCompile Include="Shader.cpp">
       <Filter>Source Files\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>Source Files\pipeline</Filter>
+    </ClCompile>
+    <ClCompile Include="Propertie.cpp">
+      <Filter>Source Files\pipeline</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>Source Files\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Light.cpp">
+      <Filter>Source Files\Shading</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLoop.cpp">
+      <Filter>Source Files\pipeline</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderComponent.cpp">
+      <Filter>Source Files\Shading</Filter>
+    </ClCompile>
+    <ClCompile Include="PShader.cpp">
+      <Filter>Source Files\Shading</Filter>
+    </ClCompile>
+    <ClCompile Include="Material.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -69,9 +105,6 @@
     <ClInclude Include="GameObject.h">
       <Filter>Source Files\GameFiles</Filter>
     </ClInclude>
-    <ClInclude Include="sGameObject.h">
-      <Filter>Source Files\GameFiles</Filter>
-    </ClInclude>
     <ClInclude Include="Propertie.h">
       <Filter>Source Files\GameFiles</Filter>
     </ClInclude>
@@ -84,6 +117,45 @@
     <ClInclude Include="OBJ_Loader.h">
       <Filter>Source Files\Loaders</Filter>
     </ClInclude>
+    <ClInclude Include="Material.h">
+      <Filter>Source Files\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>Source Files\pipeline</Filter>
+    </ClInclude>
+    <ClInclude Include="stb_image.h">
+      <Filter>Source Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>Source Files\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Source Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="Settings.h">
+      <Filter>Source Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>Source Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Component.h">
+      <Filter>Source Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLoop.h">
+      <Filter>Source Files\pipeline</Filter>
+    </ClInclude>
+    <ClInclude Include="Light.h">
+      <Filter>Source Files\Shading</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Source Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderComponent.h">
+      <Filter>Source Files\Shading</Filter>
+    </ClInclude>
+    <ClInclude Include="PShader.h">
+      <Filter>Source Files\Shading</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Simple.vert">
@@ -92,5 +164,12 @@
     <None Include="Simple.frag">
       <Filter>Shaders</Filter>
     </None>
+    <None Include="assimp-vc142-mt.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="GLO.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="CMakeLists.txt" />
   </ItemGroup>
 </Project>

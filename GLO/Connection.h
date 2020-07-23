@@ -160,7 +160,7 @@ public:
     Connection(const Connection& orig);
     virtual ~Connection();
 private:
-    int m_Socket;
+    int m_Socket = 0;
     string m_VariableName;
 };
 

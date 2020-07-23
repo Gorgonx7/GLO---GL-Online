@@ -1,7 +1,9 @@
 #pragma once
+
+
 #include <string>
-#include "Model.h"
 #include "OBJ_Loader.h"
+
 class ModelLoader
 {
 public:
@@ -9,6 +11,7 @@ public:
 	std::vector<objl::Mesh> GetModel();
 
 private:
+	
 	objl::Loader loader;
 
 };

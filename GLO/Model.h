@@ -12,20 +12,36 @@
  */
 
 #pragma once
-#include <glm/glm.hpp>
 #include <vector>
-#include <iostream>
-#include "OBJ_Loader.h"
-#include "ModelLoader.h"
+#include <string>
+#include "Shader.h"
+#include "Mesh.h"
+#include <assimp/Importer.hpp>
+#include <assimp/scene.h>
+#include <assimp/postprocess.h>
+
+
 class Model {
 public:
-    std::vector<objl::Mesh> Meshes;
-    ModelLoader* loader;
-    Model(std::string FileLoc);
-    Model(const Model& orig);
-    virtual ~Model();
+    Model(const char* path)
+    {
+        loadModel(path);
+    }
+    Model(const Model& original) {
+
+    }
+    void Draw(Shader * shader);
+    void SetTransform(glm::mat4 value);
 private:
-    std::string fileLoc;
+    // model data
+    std::vector<Mesh> meshes;
+    std::string directory;
+    glm::mat4 * transform = new glm::mat4();
+    void loadModel(std::string path);
+    void processNode(aiNode* node, const aiScene* scene);
+    Mesh processMesh(aiMesh* mesh, const aiScene* scene);
+    vector<Texture> loadMaterialTextures(aiMaterial* mat, aiTextureType type, string typeName);
+    vector<Texture> textures_loaded;
 };
 
 

@@ -17,6 +17,7 @@
 // Math.h - STD math Library
 #include <math.h>
 
+#include <glm/glm.hpp>
 // Print progress to console while loading (large models)
 #define OBJL_CONSOLE_OUTPUT
 
@@ -58,11 +59,11 @@ namespace objl
 		// Material Name
 		std::string name;
 		// Ambient Color
-		glm::vec3 Ka;
+		glm::vec3 Ka = glm::vec3();
 		// Diffuse Color
-		glm::vec3 Kd;
+		glm::vec3 Kd = glm::vec3();;
 		// Specular Color
-		glm::vec3 Ks;
+		glm::vec3 Ks = glm::vec3();;
 		// Specular Exponent
 		float Ns;
 		// Optical Density
@@ -120,7 +121,7 @@ namespace objl
 	namespace math
 	{
 		// glm::vec3 Cross Product
-		glm::vec3 CrossV3(const glm::vec3 a, const glm::vec3 b)
+		inline glm::vec3 CrossV3(const glm::vec3 a, const glm::vec3 b)
 		{
 			return glm::vec3(a.y * b.z - a.z * b.y,
 				a.z * b.x - a.x * b.z,
@@ -128,19 +129,19 @@ namespace objl
 		}
 
 		// glm::vec3 Magnitude Calculation
-		float MagnitudeV3(const glm::vec3 in)
+		inline float MagnitudeV3(const glm::vec3 in)
 		{
 			return (sqrtf(powf(in.x, 2) + powf(in.y, 2) + powf(in.z, 2)));
 		}
 
 		// glm::vec3 DotProduct
-		float DotV3(const glm::vec3 a, const glm::vec3 b)
+		inline float DotV3(const glm::vec3 a, const glm::vec3 b)
 		{
 			return (a.x * b.x) + (a.y * b.x) + (a.z * b.z);
 		}
 
 		// Angle between 2 glm::vec3 Objects
-		float AngleBetweenV3(const glm::vec3 a, const glm::vec3 b)
+		inline float AngleBetweenV3(const glm::vec3 a, const glm::vec3 b)
 		{
 			float angle = DotV3(a, b);
 			angle /= (MagnitudeV3(a) * MagnitudeV3(b));
@@ -148,7 +149,7 @@ namespace objl
 		}
 
 		// Projection Calculation of a onto b
-		glm::vec3 ProjV3(const glm::vec3 a, const glm::vec3 b)
+		inline glm::vec3 ProjV3(const glm::vec3 a, const glm::vec3 b)
 		{
 			glm::vec3 bn = b / MagnitudeV3(b);
 			return bn * DotV3(a, bn);
@@ -162,13 +163,13 @@ namespace objl
 	namespace algorithm
 	{
 		// glm::vec3 Multiplication Opertor Overload
-		glm::vec3 operator*(const float& left, const glm::vec3& right)
+		inline glm::vec3 operator*(const float& left, const glm::vec3& right)
 		{
 			return glm::vec3(right.x * left, right.y * left, right.z * left);
 		}
 
 		// A test to see if P1 is on the same side as P2 of a line segment ab
-		bool SameSide(glm::vec3 p1, glm::vec3 p2, glm::vec3 a, glm::vec3 b)
+		inline bool SameSide(glm::vec3 p1, glm::vec3 p2, glm::vec3 a, glm::vec3 b)
 		{
 			glm::vec3 cp1 = math::CrossV3(b - a, p1 - a);
 			glm::vec3 cp2 = math::CrossV3(b - a, p2 - a);
@@ -180,7 +181,7 @@ namespace objl
 		}
 
 		// Generate a cross produect normal for a triangle
-		glm::vec3 GenTriNormal(glm::vec3 t1, glm::vec3 t2, glm::vec3 t3)
+		inline glm::vec3 GenTriNormal(glm::vec3 t1, glm::vec3 t2, glm::vec3 t3)
 		{
 			glm::vec3 u = t2 - t1;
 			glm::vec3 v = t3 - t1;
@@ -191,7 +192,7 @@ namespace objl
 		}
 
 		// Check to see if a glm::vec3 Point is within a 3 glm::vec3 Triangle
-		bool inTriangle(glm::vec3 point, glm::vec3 tri1, glm::vec3 tri2, glm::vec3 tri3)
+		inline bool inTriangle(glm::vec3 point, glm::vec3 tri1, glm::vec3 tri2, glm::vec3 tri3)
 		{
 			// Test to see if it is within an infinite prism that the triangle outlines.
 			bool within_tri_prisim = SameSide(point, tri1, tri2, tri3) && SameSide(point, tri2, tri1, tri3)
@@ -326,7 +327,7 @@ namespace objl
 		//
 		// If the file is unable to be found
 		// or unable to be loaded return false
-		bool LoadFile(std::string Path)
+		inline bool LoadFile(std::string Path)
 		{
 			// If the file is not an .obj file return false
 			if (Path.substr(Path.size() - 4, 4) != ".obj")
@@ -547,7 +548,7 @@ namespace objl
 
 					if (temp.size() != 1)
 					{
-						for (int i = 0; i < temp.size() - 1; i++)
+						for (unsigned int i = 0; i < temp.size() - 1; i++)
 						{
 							pathtomat += temp[i] + "/";
 						}
@@ -584,13 +585,13 @@ namespace objl
 			file.close();
 
 			// Set Materials for each Mesh
-			for (int i = 0; i < MeshMatNames.size(); i++)
+			for (unsigned int i = 0; i < MeshMatNames.size(); i++)
 			{
 				std::string matname = MeshMatNames[i];
 
 				// Find corresponding material name in loaded materials
 				// when found copy material variables into mesh material
-				for (int j = 0; j < LoadedMaterials.size(); j++)
+				for (unsigned int j = 0; j < LoadedMaterials.size(); j++)
 				{
 					if (LoadedMaterials[j].name == matname)
 					{
@@ -638,7 +639,7 @@ namespace objl
 			for (int i = 0; i < int(sface.size()); i++)
 			{
 				// See What type the vertex is.
-				int vtype;
+				int vtype{};
 
 				algorithm::split(sface[i], svert, "/");
 
@@ -844,7 +845,7 @@ namespace objl
 					}
 
 					// If Vertex is not an interior vertex
-					float angle = math::AngleBetweenV3(pPrev.Position - pCur.Position, pNext.Position - pCur.Position) * (180 / 3.14159265359);
+					double angle = math::AngleBetweenV3(pPrev.Position - pCur.Position, pNext.Position - pCur.Position) * (180 / 3.14159265359);
 					if (angle <= 0 && angle >= 180)
 						continue;
 
