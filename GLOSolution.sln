@@ -11,6 +11,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GLODBM", "GLODBM\GLODBM.vcx
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GLOServer", "GLOServer\GLOServer.vcxproj", "{88C5655E-5C8A-4949-807D-708BFDB4372C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A6BD024F-330A-4A94-80BF-F2F158C37963}"
+	ProjectSection(SolutionItems) = preProject
+		Notes_And_issues.txt = Notes_And_issues.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		CMake|x64 = CMake|x64
@@ -74,7 +79,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		VisualSVNWorkingCopyRoot = .
 		SolutionGuid = {65A720E5-5E63-49D6-94F1-35000DDF73EA}
+		VisualSVNWorkingCopyRoot = .
 	EndGlobalSection
 EndGlobal

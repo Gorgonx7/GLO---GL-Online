@@ -7,7 +7,7 @@ class Light : public ShaderComponent
 
 	};
 public:
-	void WriteVariables(std::string* output, const PShader* shader) override;
+	void WriteVariables(std::string* output) override;
 private:
 	float ambientStrength = 0.0f;
 	glm::vec3 ambientColour;

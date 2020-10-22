@@ -1,11 +1,11 @@
 #pragma once
 #include <string>
-#include "PShader.h"
+
 class ShaderComponent
 {
 public:
 	virtual ~ShaderComponent();
-	virtual void WriteVariables(std::string* output, const PShader * shader)  = 0;
+	virtual void WriteVariables(std::string* output)  = 0;
 
 protected:
 	ShaderComponent() {
