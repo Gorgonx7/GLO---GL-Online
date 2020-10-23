@@ -24,24 +24,31 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="glad.c" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Material.cpp" />
+    <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="ModelLoader.cpp" />
     <ClCompile Include="Propertie.cpp" />
     <ClCompile Include="sGameObject.cpp" />
     <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="Vertex.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Connection.h" />
     <ClInclude Include="connectionManager.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="Material.h" />
+    <ClInclude Include="Mesh.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="ModelLoader.h" />
     <ClInclude Include="OBJ_Loader.h" />
     <ClInclude Include="Propertie.h" />
     <ClInclude Include="sGameObject.h" />
     <ClInclude Include="Shader.h" />
+    <ClInclude Include="Vertex.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram.cd" />
     <None Include="Simple.frag" />
     <None Include="Simple.vert" />
   </ItemGroup>
@@ -99,13 +106,13 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>IsLs\include;$(IncludePath)</IncludePath>
-    <LibraryPath>IsLs\libraries;$(LibraryPath)</LibraryPath>
+    <IncludePath>IsLs\include;IsLs\include;$(IncludePath)</IncludePath>
+    <LibraryPath>IsLs\libraries;IsLs\libraries;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>D:\Users\James Gordon\Desktop\desktop\VRProject.git\branches\windo\GLO\IsLs\include;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\Users\James Gordon\Desktop\desktop\VRProject.git\branches\windo\GLO\IsLs\libraries;$(LibraryPath)</LibraryPath>
+    <IncludePath>IsLs\include;$(IncludePath)</IncludePath>
+    <LibraryPath>IsLs\libraries;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -142,6 +149,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

@@ -1,8 +1,8 @@
 #include "ModelLoader.h"
 #include <fstream>
 #include <vector>
-#include <glm/glm.hpp>
-#include "OBJ_Loader.h"
+
+
 ModelLoader::ModelLoader(std::string fileLoc)
 {
 	using namespace std;
@@ -10,7 +10,7 @@ ModelLoader::ModelLoader(std::string fileLoc)
 
 }
 
-std::vector<objl::Mesh> ModelLoader::GetModel()
+std::vector<Mesh> ModelLoader::GetModel()
 {
 	return loader.LoadedMeshes;
 }

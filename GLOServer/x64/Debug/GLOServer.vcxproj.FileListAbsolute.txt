@@ -1,0 +1,2 @@
+W:\GLO---GL-Online\x64\Debug\GLOServer.exe.lastcodeanalysissucceeded
+W:\GLO---GL-Online\GLOServer\x64\Debug\NativeCodeAnalysis.read.1.tlog

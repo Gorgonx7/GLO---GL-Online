@@ -12,14 +12,15 @@
  */
 
 #pragma once
-#include <glm/glm.hpp>
+#include "ModelLoader.h"
 #include <vector>
 #include <iostream>
-#include "OBJ_Loader.h"
-#include "ModelLoader.h"
+#include "Mesh.h"
+
+
 class Model {
 public:
-    std::vector<objl::Mesh> Meshes;
+    std::vector<Mesh> Meshes;
     ModelLoader* loader;
     Model(std::string FileLoc);
     Model(const Model& orig);

@@ -16,6 +16,8 @@
 
 // Math.h - STD math Library
 #include <math.h>
+#include <glm/glm.hpp>
+#include "Mesh.h"
 
 // Print progress to console while loading (large models)
 #define OBJL_CONSOLE_OUTPUT
@@ -28,90 +30,9 @@ namespace objl
 {
 	
 
-	// Structure: Vertex
-	//
-	// Description: Model Vertex object that holds
-	//	a Position, Normal, and Texture Coordinate
-	struct Vertex
-	{
-		// Position Vector
-		glm::vec3 Position;
 
-		// Normal Vector
-		glm::vec3 Normal;
-
-		// Texture Coordinate Vector
-		glm::vec2 TextureCoordinate;
-	};
-
-	struct Material
-	{
-		Material()
-		{
-			name;
-			Ns = 0.0f;
-			Ni = 0.0f;
-			d = 0.0f;
-			illum = 0;
-		}
-
-		// Material Name
-		std::string name;
-		// Ambient Color
-		glm::vec3 Ka;
-		// Diffuse Color
-		glm::vec3 Kd;
-		// Specular Color
-		glm::vec3 Ks;
-		// Specular Exponent
-		float Ns;
-		// Optical Density
-		float Ni;
-		// Dissolve
-		float d;
-		// Illumination
-		int illum;
-		// Ambient Texture Map
-		std::string map_Ka;
-		// Diffuse Texture Map
-		std::string map_Kd;
-		// Specular Texture Map
-		std::string map_Ks;
-		// Specular Hightlight Map
-		std::string map_Ns;
-		// Alpha Texture Map
-		std::string map_d;
-		// Bump Map
-		std::string map_bump;
-	};
-
-	// Structure: Mesh
-	//
-	// Description: A Simple Mesh Object that holds
-	//	a name, a vertex list, and an index list
-	struct Mesh
-	{
-		// Default Constructor
-		Mesh()
-		{
-
-		}
-		// Variable Set Constructor
-		Mesh(std::vector<Vertex>& _Vertices, std::vector<unsigned int>& _Indices)
-		{
-			Vertices = _Vertices;
-			Indices = _Indices;
-		}
-		// Mesh Name
-		std::string MeshName;
-		// Vertex List
-		std::vector<Vertex> Vertices;
-		// Index List
-		std::vector<unsigned int> Indices;
-
-		// Material
-		Material MeshMaterial;
-	};
+	
+	
 
 	// Namespace: Math
 	//
@@ -161,11 +82,7 @@ namespace objl
 	// Algorithms needed for OBJL
 	namespace algorithm
 	{
-		// glm::vec3 Multiplication Opertor Overload
-		glm::vec3 operator*(const float& left, const glm::vec3& right)
-		{
-			return glm::vec3(right.x * left, right.y * left, right.z * left);
-		}
+		
 
 		// A test to see if P1 is on the same side as P2 of a line segment ab
 		bool SameSide(glm::vec3 p1, glm::vec3 p2, glm::vec3 a, glm::vec3 b)

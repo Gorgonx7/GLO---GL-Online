@@ -1,0 +1,10 @@
+﻿  ClientConnection.cpp
+  Connection.cpp
+  ConnectionAddress.cpp
+W:\GLO---GL-Online\GLOServer\ConnectionAddress.h(19,57): warning C4114: same type qualifier used more than once
+W:\GLO---GL-Online\GLOServer\ConnectionAddress.h(20,44): warning C4114: same type qualifier used more than once
+  DBQuery.cpp
+  main.cpp
+  Compiling...
+  Generating Code...
+  GLOServer.vcxproj -> W:\GLO---GL-Online\x64\Debug\GLOServer.exe

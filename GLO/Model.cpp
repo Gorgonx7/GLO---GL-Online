@@ -10,9 +10,9 @@
  * 
  * Created on 04 August 2018, 22:57
  */
-
-#include "Model.h"
 #include "ModelLoader.h"
+#include "Model.h"
+
 Model::Model(std::string fileLoc) {
     Model::fileLoc = fileLoc;
     loader = new ModelLoader(Model::fileLoc);

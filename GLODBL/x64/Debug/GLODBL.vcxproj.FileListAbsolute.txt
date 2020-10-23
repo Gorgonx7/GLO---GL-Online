@@ -1,0 +1,2 @@
+W:\GLO---GL-Online\x64\Debug\GLODBL.exe.lastcodeanalysissucceeded
+W:\GLO---GL-Online\GLODBL\x64\Debug\NativeCodeAnalysis.read.1.tlog
