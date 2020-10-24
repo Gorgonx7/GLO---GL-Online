@@ -4,6 +4,7 @@
 namespace GLO::Graphics {
 	class Material
 	{
+	public:
 		Material()
 		{
 			name;
@@ -56,5 +57,7 @@ namespace GLO::Graphics {
 		std::string map_bump;
 	};
 }
+
+
 
 

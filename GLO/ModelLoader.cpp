@@ -8,7 +8,7 @@ ModelLoader::ModelLoader(std::string fileLoc)
 
 }
 
-std::vector<objl::Mesh> ModelLoader::GetModel()
+std::vector<Mesh> ModelLoader::GetModel()
 {
 	return loader.LoadedMeshes;
 }

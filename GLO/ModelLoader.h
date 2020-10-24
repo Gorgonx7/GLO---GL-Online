@@ -8,7 +8,7 @@ class ModelLoader
 {
 public:
 	ModelLoader(std::string fileLoc);
-	std::vector<objl::Mesh> GetModel();
+	std::vector<Mesh> GetModel();
 
 private:
 	

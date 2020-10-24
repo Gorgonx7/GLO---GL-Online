@@ -16,8 +16,10 @@
 
 // Math.h - STD math Library
 #include <math.h>
-
+#include "Material.h"
 #include <glm/glm.hpp>
+#include "Vertex.h"
+#include "Mesh.h"
 // Print progress to console while loading (large models)
 #define OBJL_CONSOLE_OUTPUT
 
@@ -27,92 +29,7 @@
 //	is needed and used for the OBJ Model Loader
 namespace objl
 {
-	
 
-	// Structure: Vertex
-	//
-	// Description: Model Vertex object that holds
-	//	a Position, Normal, and Texture Coordinate
-	struct Vertex
-	{
-		// Position Vector
-		glm::vec3 Position;
-
-		// Normal Vector
-		glm::vec3 Normal;
-
-		// Texture Coordinate Vector
-		glm::vec2 TextureCoordinate;
-	};
-
-	struct Material
-	{
-		Material()
-		{
-			name;
-			Ns = 0.0f;
-			Ni = 0.0f;
-			d = 0.0f;
-			illum = 0;
-		}
-
-		// Material Name
-		std::string name;
-		// Ambient Color
-		glm::vec3 Ka = glm::vec3();
-		// Diffuse Color
-		glm::vec3 Kd = glm::vec3();;
-		// Specular Color
-		glm::vec3 Ks = glm::vec3();;
-		// Specular Exponent
-		float Ns;
-		// Optical Density
-		float Ni;
-		// Dissolve
-		float d;
-		// Illumination
-		int illum;
-		// Ambient Texture Map
-		std::string map_Ka;
-		// Diffuse Texture Map
-		std::string map_Kd;
-		// Specular Texture Map
-		std::string map_Ks;
-		// Specular Hightlight Map
-		std::string map_Ns;
-		// Alpha Texture Map
-		std::string map_d;
-		// Bump Map
-		std::string map_bump;
-	};
-
-	// Structure: Mesh
-	//
-	// Description: A Simple Mesh Object that holds
-	//	a name, a vertex list, and an index list
-	struct Mesh
-	{
-		// Default Constructor
-		Mesh()
-		{
-
-		}
-		// Variable Set Constructor
-		Mesh(std::vector<Vertex>& _Vertices, std::vector<unsigned int>& _Indices)
-		{
-			Vertices = _Vertices;
-			Indices = _Indices;
-		}
-		// Mesh Name
-		std::string MeshName;
-		// Vertex List
-		std::vector<Vertex> Vertices;
-		// Index List
-		std::vector<unsigned int> Indices;
-
-		// Material
-		Material MeshMaterial;
-	};
 
 	// Namespace: Math
 	//
@@ -618,7 +535,7 @@ namespace objl
 		// Loaded Index Positions
 		std::vector<unsigned int> LoadedIndices;
 		// Loaded Material Objects
-		std::vector<Material> LoadedMaterials;
+		std::vector<GLO::Graphics::Material> LoadedMaterials;
 
 	private:
 		// Generate vertices from a list of positions, 
@@ -914,7 +831,7 @@ namespace objl
 			if (!file.is_open())
 				return false;
 
-			Material tempMaterial;
+			GLO::Graphics::Material tempMaterial;
 
 			bool listening = false;
 
@@ -946,7 +863,7 @@ namespace objl
 						LoadedMaterials.push_back(tempMaterial);
 
 						// Clear Loaded Material
-						tempMaterial = Material();
+						tempMaterial = GLO::Graphics::Material();
 
 						if (curline.size() > 7)
 						{
