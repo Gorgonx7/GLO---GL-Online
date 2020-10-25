@@ -31,7 +31,7 @@
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Connection.cpp" />
     <ClCompile Include="connectionManager.cpp" />
-    <ClCompile Include="entity.cpp" />
+    <ClCompile Include="Entity.cpp" />
     <ClCompile Include="GameLoop.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="glad.c" />
@@ -54,7 +54,7 @@
     <ClInclude Include="Component.h" />
     <ClInclude Include="Connection.h" />
     <ClInclude Include="connectionManager.h" />
-    <ClInclude Include="entity.h" />
+    <ClInclude Include="Entity.h" />
     <ClInclude Include="GameLoop.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Light.h" />

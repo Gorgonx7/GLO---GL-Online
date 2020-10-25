@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 #include "Component.h"
-class entity
+class Entity
 {
 public:
 	inline void addComponent(Component * comp) {

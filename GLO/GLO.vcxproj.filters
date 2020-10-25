@@ -35,6 +35,12 @@
     <Filter Include="Source Files\entities">
       <UniqueIdentifier>{0be1e7c3-dd40-4702-8d30-73d280f09e4a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Data\shaderData">
+      <UniqueIdentifier>{15c89204-03a4-4a07-b207-5df6609e322d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Data\MeshandModels">
+      <UniqueIdentifier>{88c2c17a-e538-46f1-913f-e20099ba6b68}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="connectionManager.cpp">
@@ -46,9 +52,6 @@
     <ClCompile Include="GameObject.cpp">
       <Filter>Source Files\GameFiles</Filter>
     </ClCompile>
-    <ClCompile Include="Model.cpp">
-      <Filter>Source Files\Data</Filter>
-    </ClCompile>
     <ClCompile Include="ModelLoader.cpp">
       <Filter>Source Files\Loaders</Filter>
     </ClCompile>
@@ -58,17 +61,11 @@
     <ClCompile Include="glad.c">
       <Filter>Source Files\util</Filter>
     </ClCompile>
-    <ClCompile Include="Shader.cpp">
-      <Filter>Source Files\Data</Filter>
-    </ClCompile>
     <ClCompile Include="Renderer.cpp">
       <Filter>Source Files\pipeline</Filter>
     </ClCompile>
     <ClCompile Include="Propertie.cpp">
       <Filter>Source Files\pipeline</Filter>
-    </ClCompile>
-    <ClCompile Include="Mesh.cpp">
-      <Filter>Source Files\Data</Filter>
     </ClCompile>
     <ClCompile Include="Camera.cpp">
       <Filter>Source Files\util</Filter>
@@ -91,20 +88,26 @@
     <ClCompile Include="PShader.cpp">
       <Filter>Source Files\Shading</Filter>
     </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Source Files\entities</Filter>
+    </ClCompile>
     <ClCompile Include="Material.cpp">
-      <Filter>Source Files\Data</Filter>
+      <Filter>Source Files\Data\shaderData</Filter>
+    </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>Source Files\Data\shaderData</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>Source Files\Data\MeshandModels</Filter>
+    </ClCompile>
+    <ClCompile Include="Model.cpp">
+      <Filter>Source Files\Data\MeshandModels</Filter>
     </ClCompile>
     <ClCompile Include="Vertex.cpp">
-      <Filter>Source Files\Data</Filter>
-    </ClCompile>
-    <ClCompile Include="entity.cpp">
-      <Filter>Source Files\entities</Filter>
+      <Filter>Source Files\Data\MeshandModels</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Model.h">
-      <Filter>Source Files\Data</Filter>
-    </ClInclude>
     <ClInclude Include="Connection.h">
       <Filter>Source Files\Networking</Filter>
     </ClInclude>
@@ -117,26 +120,17 @@
     <ClInclude Include="Propertie.h">
       <Filter>Source Files\GameFiles</Filter>
     </ClInclude>
-    <ClInclude Include="Shader.h">
-      <Filter>Source Files\Data</Filter>
-    </ClInclude>
     <ClInclude Include="ModelLoader.h">
       <Filter>Source Files\Loaders</Filter>
     </ClInclude>
     <ClInclude Include="OBJ_Loader.h">
       <Filter>Source Files\Loaders</Filter>
     </ClInclude>
-    <ClInclude Include="Material.h">
-      <Filter>Source Files\Data</Filter>
-    </ClInclude>
     <ClInclude Include="Renderer.h">
       <Filter>Source Files\pipeline</Filter>
     </ClInclude>
     <ClInclude Include="stb_image.h">
       <Filter>Source Files\util</Filter>
-    </ClInclude>
-    <ClInclude Include="Mesh.h">
-      <Filter>Source Files\Data</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>Source Files\util</Filter>
@@ -165,11 +159,23 @@
     <ClInclude Include="PShader.h">
       <Filter>Source Files\Shading</Filter>
     </ClInclude>
-    <ClInclude Include="entity.h">
+    <ClInclude Include="Entity.h">
       <Filter>Source Files\entities</Filter>
     </ClInclude>
+    <ClInclude Include="Material.h">
+      <Filter>Source Files\Data\shaderData</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>Source Files\Data\shaderData</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>Source Files\Data\MeshandModels</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.h">
+      <Filter>Source Files\Data\MeshandModels</Filter>
+    </ClInclude>
     <ClInclude Include="Vertex.h">
-      <Filter>Source Files\Data</Filter>
+      <Filter>Source Files\Data\MeshandModels</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

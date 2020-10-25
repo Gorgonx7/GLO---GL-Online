@@ -1,2 +1,12 @@
 
 Compiler standard: C++17
+
+Requirements:
+Seperate out engine and script logic, perhaps create system in such a way that it could be configured using yml files?
+
+
+TODO:
+Add vulkan support
+Add level management
+Clear UI intergration
+seperate out game and engine logic

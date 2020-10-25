@@ -40,6 +40,7 @@ private:
     unsigned int VAO, VBO, EBO;
 
     void setupMesh();
+    void GenBuffers();
 };
 
 
