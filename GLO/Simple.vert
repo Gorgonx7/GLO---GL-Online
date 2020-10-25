@@ -11,7 +11,9 @@ uniform mat4 model;
 
 void main()
 {
+	vec3 vert = aPos;
+	vert.y = vert.y + (.3 * sin(vert.x));
 	mat4 VMP = projection * view * model;
-	gl_Position = VMP * vec4(aPos.x, aPos.y, aPos.z, 1.0) ;
+	gl_Position = VMP * vec4(vert.x, vert.y, vert.z, 1.0) ;
 	TexCoord = aTexCoord;
 }

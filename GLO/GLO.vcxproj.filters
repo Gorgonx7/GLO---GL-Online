@@ -32,6 +32,9 @@
     <Filter Include="Source Files\Shading">
       <UniqueIdentifier>{3af3fd8e-69db-4960-a2cd-174efbdf5a9f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\entities">
+      <UniqueIdentifier>{0be1e7c3-dd40-4702-8d30-73d280f09e4a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="connectionManager.cpp">
@@ -93,6 +96,9 @@
     </ClCompile>
     <ClCompile Include="Vertex.cpp">
       <Filter>Source Files\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="entity.cpp">
+      <Filter>Source Files\entities</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -159,7 +165,12 @@
     <ClInclude Include="PShader.h">
       <Filter>Source Files\Shading</Filter>
     </ClInclude>
-    <ClInclude Include="Vertex.h" />
+    <ClInclude Include="entity.h">
+      <Filter>Source Files\entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Vertex.h">
+      <Filter>Source Files\Data</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Simple.vert">
