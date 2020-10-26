@@ -41,6 +41,7 @@ private:
 
     void setupMesh();
     void GenBuffers();
+    void BindVertexData();
 };
 
 

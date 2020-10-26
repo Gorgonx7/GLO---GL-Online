@@ -7,6 +7,9 @@ public:
 	inline void addComponent(Component * comp) {
 		components.push_back(comp);
 	};
+	inline std::vector<Component*> getComponents() {  
+		return components;
+	};
 private:
 	std::vector<Component*> components;
 };

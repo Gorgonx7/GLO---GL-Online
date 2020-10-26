@@ -32,14 +32,14 @@
     <Filter Include="Source Files\Shading">
       <UniqueIdentifier>{3af3fd8e-69db-4960-a2cd-174efbdf5a9f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\entities">
-      <UniqueIdentifier>{0be1e7c3-dd40-4702-8d30-73d280f09e4a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Data\shaderData">
       <UniqueIdentifier>{15c89204-03a4-4a07-b207-5df6609e322d}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Data\MeshandModels">
       <UniqueIdentifier>{88c2c17a-e538-46f1-913f-e20099ba6b68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entities">
+      <UniqueIdentifier>{0be1e7c3-dd40-4702-8d30-73d280f09e4a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -89,7 +89,7 @@
       <Filter>Source Files\Shading</Filter>
     </ClCompile>
     <ClCompile Include="Entity.cpp">
-      <Filter>Source Files\entities</Filter>
+      <Filter>Source Files\Entities</Filter>
     </ClCompile>
     <ClCompile Include="Material.cpp">
       <Filter>Source Files\Data\shaderData</Filter>
@@ -160,7 +160,7 @@
       <Filter>Source Files\Shading</Filter>
     </ClInclude>
     <ClInclude Include="Entity.h">
-      <Filter>Source Files\entities</Filter>
+      <Filter>Source Files\Entities</Filter>
     </ClInclude>
     <ClInclude Include="Material.h">
       <Filter>Source Files\Data\shaderData</Filter>
