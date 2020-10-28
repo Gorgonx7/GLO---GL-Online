@@ -19,10 +19,12 @@ public:
     {
 
     }
+   
     // mesh data
     std::vector<Vertex>       Vertices;
     std::vector<unsigned int> Indices;
     std::vector<Texture>      textures;
+    
     // Mesh Name
     std::string MeshName;
     Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices, std::vector<Texture> textures);

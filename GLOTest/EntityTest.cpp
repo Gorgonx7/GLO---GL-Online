@@ -13,16 +13,13 @@ namespace GLOTest
 		
 		TEST_METHOD(AddComponent)
 		{
-			class TestComponent : public Component {
-			public:
-				TestComponent() {
-
-				}
-			};
-			TestComponent * testComp = new TestComponent();
+			
+			
 			Entity ent = Entity();
-			ent.addComponent(testComp);
-			Assert::AreEqual(ent.getComponents().size(), std::vector<int>{1}.size());
+			Component * comp = new Component();
+			ent.addComponent(comp);
+			
+			Assert::AreEqual(ent.getComponents().size(), std::vector<Component*>{comp}.size());
 		}
 	};
 }

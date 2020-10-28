@@ -17,20 +17,8 @@
     <Filter Include="Source Files\Data">
       <UniqueIdentifier>{e953e148-7f63-47fc-b18d-5b44af232fb7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Loaders">
-      <UniqueIdentifier>{a2ce6be4-7328-4ec6-b029-c19256566f26}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\util">
       <UniqueIdentifier>{68ac0310-bd9a-4438-a9f5-e33263279c50}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\pipeline">
-      <UniqueIdentifier>{98c8c487-1acd-4bd8-afa3-fe55e5388273}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Components">
-      <UniqueIdentifier>{fbe56609-3353-4366-95a1-2418bfa57d04}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Shading">
-      <UniqueIdentifier>{3af3fd8e-69db-4960-a2cd-174efbdf5a9f}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Data\shaderData">
       <UniqueIdentifier>{15c89204-03a4-4a07-b207-5df6609e322d}</UniqueIdentifier>
@@ -38,8 +26,26 @@
     <Filter Include="Source Files\Data\MeshandModels">
       <UniqueIdentifier>{88c2c17a-e538-46f1-913f-e20099ba6b68}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Entities">
+    <Filter Include="Source Files\Data\Components">
+      <UniqueIdentifier>{fbe56609-3353-4366-95a1-2418bfa57d04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Data\Entities">
       <UniqueIdentifier>{0be1e7c3-dd40-4702-8d30-73d280f09e4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Data\Loaders">
+      <UniqueIdentifier>{a2ce6be4-7328-4ec6-b029-c19256566f26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\renderers">
+      <UniqueIdentifier>{b9f34f86-c612-4807-87a3-f07f27b848a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\renderers\pipeline">
+      <UniqueIdentifier>{98c8c487-1acd-4bd8-afa3-fe55e5388273}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\renderers\Shading">
+      <UniqueIdentifier>{3af3fd8e-69db-4960-a2cd-174efbdf5a9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Physics">
+      <UniqueIdentifier>{4990ee5b-1c07-4787-90c0-0919b2529661}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -53,7 +59,7 @@
       <Filter>Source Files\GameFiles</Filter>
     </ClCompile>
     <ClCompile Include="ModelLoader.cpp">
-      <Filter>Source Files\Loaders</Filter>
+      <Filter>Source Files\Data\Loaders</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files\util</Filter>
@@ -62,34 +68,34 @@
       <Filter>Source Files\util</Filter>
     </ClCompile>
     <ClCompile Include="Renderer.cpp">
-      <Filter>Source Files\pipeline</Filter>
+      <Filter>Source Files\renderers\pipeline</Filter>
     </ClCompile>
     <ClCompile Include="Propertie.cpp">
-      <Filter>Source Files\pipeline</Filter>
+      <Filter>Source Files\renderers\pipeline</Filter>
     </ClCompile>
     <ClCompile Include="Camera.cpp">
       <Filter>Source Files\util</Filter>
     </ClCompile>
     <ClCompile Include="Transform.cpp">
-      <Filter>Source Files\Components</Filter>
+      <Filter>Source Files\Data\Components</Filter>
     </ClCompile>
     <ClCompile Include="Component.cpp">
-      <Filter>Source Files\Components</Filter>
+      <Filter>Source Files\Data\Components</Filter>
     </ClCompile>
     <ClCompile Include="Light.cpp">
-      <Filter>Source Files\Shading</Filter>
+      <Filter>Source Files\renderers\Shading</Filter>
     </ClCompile>
     <ClCompile Include="GameLoop.cpp">
-      <Filter>Source Files\pipeline</Filter>
+      <Filter>Source Files\renderers\pipeline</Filter>
     </ClCompile>
     <ClCompile Include="ShaderComponent.cpp">
-      <Filter>Source Files\Shading</Filter>
+      <Filter>Source Files\renderers\Shading</Filter>
     </ClCompile>
     <ClCompile Include="PShader.cpp">
-      <Filter>Source Files\Shading</Filter>
+      <Filter>Source Files\renderers\Shading</Filter>
     </ClCompile>
     <ClCompile Include="Entity.cpp">
-      <Filter>Source Files\Entities</Filter>
+      <Filter>Source Files\Data\Entities</Filter>
     </ClCompile>
     <ClCompile Include="Material.cpp">
       <Filter>Source Files\Data\shaderData</Filter>
@@ -121,13 +127,13 @@
       <Filter>Source Files\GameFiles</Filter>
     </ClInclude>
     <ClInclude Include="ModelLoader.h">
-      <Filter>Source Files\Loaders</Filter>
+      <Filter>Source Files\Data\Loaders</Filter>
     </ClInclude>
     <ClInclude Include="OBJ_Loader.h">
-      <Filter>Source Files\Loaders</Filter>
+      <Filter>Source Files\Data\Loaders</Filter>
     </ClInclude>
     <ClInclude Include="Renderer.h">
-      <Filter>Source Files\pipeline</Filter>
+      <Filter>Source Files\renderers\pipeline</Filter>
     </ClInclude>
     <ClInclude Include="stb_image.h">
       <Filter>Source Files\util</Filter>
@@ -139,28 +145,28 @@
       <Filter>Source Files\util</Filter>
     </ClInclude>
     <ClInclude Include="Transform.h">
-      <Filter>Source Files\Components</Filter>
+      <Filter>Source Files\Data\Components</Filter>
     </ClInclude>
     <ClInclude Include="Component.h">
-      <Filter>Source Files\Components</Filter>
+      <Filter>Source Files\Data\Components</Filter>
     </ClInclude>
     <ClInclude Include="GameLoop.h">
-      <Filter>Source Files\pipeline</Filter>
+      <Filter>Source Files\renderers\pipeline</Filter>
     </ClInclude>
     <ClInclude Include="Light.h">
-      <Filter>Source Files\Shading</Filter>
+      <Filter>Source Files\renderers\Shading</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Source Files\util</Filter>
     </ClInclude>
     <ClInclude Include="ShaderComponent.h">
-      <Filter>Source Files\Shading</Filter>
+      <Filter>Source Files\renderers\Shading</Filter>
     </ClInclude>
     <ClInclude Include="PShader.h">
-      <Filter>Source Files\Shading</Filter>
+      <Filter>Source Files\renderers\Shading</Filter>
     </ClInclude>
     <ClInclude Include="Entity.h">
-      <Filter>Source Files\Entities</Filter>
+      <Filter>Source Files\Data\Entities</Filter>
     </ClInclude>
     <ClInclude Include="Material.h">
       <Filter>Source Files\Data\shaderData</Filter>
