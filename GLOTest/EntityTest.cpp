@@ -20,6 +20,13 @@ namespace GLOTest
 			ent.addComponent(comp);
 			
 			Assert::AreEqual(ent.getComponents().size(), std::vector<Component*>{comp}.size());
+			delete comp;
+		}
+		TEST_METHOD(CreateEntity) {
+			Entity* ent = new Entity();
+			Assert::IsNotNull(ent);
+			delete ent;
+
 		}
 	};
 }
